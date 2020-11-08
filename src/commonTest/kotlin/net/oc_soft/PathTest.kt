@@ -1,4 +1,4 @@
-package net.ocsoft
+package net.oc_soft
 
 import kotlin.test.Test
 import kotlin.test.assertTrue
