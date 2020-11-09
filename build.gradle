@@ -100,6 +100,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
+                implementation 'com.github.oc-soft:oc-matrix:0.1.2'
              } 
         }
         commonTest {
@@ -112,7 +113,7 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib-js')
                 implementation kotlin('test-js')
-            }
+             }
         }
         jvmTest {
             dependencies {
@@ -124,7 +125,8 @@ kotlin {
 
 signing {
     useGpgCmd()
-
+    sign publishing.publications.kotlinMultiplatform
+    sign publishing.publications.metadata
     sign publishing.publications.jvm
     sign publishing.publications.js
 }
@@ -167,7 +169,18 @@ publishing {
         }
     }
     publications {
+        kotlinMultiplatform {
+            setupPom(pom)
+            pom.name = "${project.name}"
+            artifact dokkaHtmlJar
+            artifact metadataSourcesJar
+        }
 
+        metadata {
+            setupPom(pom)
+            pom.name = "${project.name}-metadata"
+            artifact dokkaHtmlJar
+        }
         js {
             setupPom(pom)
             pom.name = "${project.name}-js"

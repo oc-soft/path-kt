@@ -5,7 +5,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.List
 import kotlin.math.*
 
-import net.ocsoft.Matrix2
+import net.oc_soft.Matrix2
 
 /**
  * extention
